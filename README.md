@@ -105,18 +105,18 @@ Objects should always be broken across lines.
 __preferred__
 ```js
 var obj = {
-  key1: val1,
-  key2: val2,
+  key1: 'val1',
+  key2: 'val2',
   key3: {
-    key4: val4,
-    key5: val5
+    key4: 'val4',
+    key5: 'val5'
   }
 };
 ```
 
 __not preferred__
 ```js
-  var obj = { key1: val1, key2: val2 };
+  var obj = { key1: 'val1', key2: 'val2', key3: { key4: 'val4', key5: 'val5' } };
 ```
 
 ## Golden Path
