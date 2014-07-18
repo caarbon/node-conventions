@@ -20,7 +20,7 @@ Do not place semicolons after any `function` unless it is a declaration (like `v
 
 Don't omit the semicolon after `return`.
 
-__good__
+__preferred__
 ```js
 var x = 12;
 var y = function(){};
@@ -35,7 +35,7 @@ function handler() {
 }
 ```
 
-__bad__
+__not preferred__
 ```js
 var x = 12
 var y = function() {}
@@ -60,7 +60,7 @@ Variable names should be camel cased. Any constructor should start with a capita
 
 Constants do not exist in Node. Since the idea of a frozen variable is loose. Global variables should be named like normal variables.
 
-__good__
+__preferred__
 ```js
 var defaultValue3 = 30;
 
@@ -72,7 +72,7 @@ function Parent() {
 var child = new Parent();
 ```
 
-__bad__
+__not preferred__
 ```js
 var DEFAULTVALUE3 = 30;
 
@@ -88,7 +88,7 @@ var Child = new Parent();
 
 Objects should always be broken across lines.
 
-__good__
+__preferred__
 ```js
 var obj = {
   key1: val1,
@@ -100,7 +100,7 @@ var obj = {
 };
 ```
 
-__bad__
+__not preferred__
 ```js
   var obj = { key1: val1, key2: val2 };
 ```
@@ -125,7 +125,7 @@ var arr2 = [ anotherObj[key] ];
 
 Vertical white-space is needed for readability. Don't shy away from using space to make things readable.
 
-__good__
+__preferred__
 ```js
 var user = new User({
   id: 12
@@ -158,7 +158,7 @@ function isNotAuthed() {
 }
 ```
 
-__bad__
+__not preferred__
 ```js
 var user = new User({
   id: 12
@@ -185,3 +185,52 @@ function isNotAuthed() {
   // more logic for non-authed users
 }
 ```
+
+## If Statements
+
+All if statements should be encapsulated by `{}` brackets.
+
+No if statements should be a single line.
+
+__preferred__
+
+```js
+if (x > 10) {
+  y = 1;
+} else if (x > 0) {
+  y = 2;
+} else {
+  y = 3;
+}
+```
+
+__not preferred__
+```js
+if (x > 10) y = 1;
+else if (x > 0) y = 2;
+else y = 3;
+```
+
+__not preferred__
+```js
+if (x > 10)
+  y = 1;
+else if (x > 0)
+  y = 2;
+else
+  y = 3;
+```
+
+## Try Catch
+
+Try catch statements should follow the same rules as an if else. See the above documentation.
+
+## Use Shorthand Constructors
+
+Do not use `new Array()` or `new Object()`. Instead, use `[]` and `{}`. This is actually more efficient, and saves a few bytes.
+
+## Evil keywords
+
+Do not use `eval`. It, in general, is not very safe.
+
+Do not use `with`. It leads to some confusing situations with scope.
