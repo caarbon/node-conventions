@@ -121,7 +121,7 @@ __not preferred__
 
 ## Golden Path
 
-When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path.  That is, don't nest `if` statements.  Multiple return statements are OK.
+When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path. That is, don't nest `if` statements if you don't need to. Multiple return statements are OK.
 
 __preferred__
 ```js
@@ -158,7 +158,6 @@ function someMethod(err, callback) {
   }
 }
 ```
-
 
 ## Whitespace
 
