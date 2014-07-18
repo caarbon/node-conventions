@@ -119,6 +119,47 @@ __not preferred__
   var obj = { key1: val1, key2: val2 };
 ```
 
+## Golden Path
+
+When coding with conditionals, the left hand margin of the code should be the "golden" or "happy" path.  That is, don't nest `if` statements.  Multiple return statements are OK.
+
+__preferred__
+```js
+function someMethod(err, callback) {
+  if (err) {
+    return callback(err);
+  }
+
+  // more logic
+
+  callback();
+}
+```
+
+__not preferred__
+```js
+function someMethod(err, callback) {
+  if (!err) {
+    // more logic
+
+    callback();
+  }
+}
+```
+
+__not preferred__
+```js
+function someMethod(err, callback) {
+  if (err) {
+    return callback(err);
+  } else {
+    // more logic
+    callback();
+  }
+}
+```
+
+
 ## Whitespace
 
 Every statement (`if`, `for`, `while`, `do`, `switch`, `try`, `catch`, `finally`) should have a space before the following `{` bracket or `(` parenthese.
