@@ -54,11 +54,11 @@ function handler() {
 
 ## Naming
 
-All names should be limited to using alpha `a-z` and numeric `0-9` characters. All names should start with an alpha character. One exception is when dealing with an outside dependency, like SQL, where a table name may contain underscores.
+All names should be limited to using alpha `a-z` and numeric `0-9` characters. All names should start with an alpha character. One exception is when dealing with an outside dependency, like SQL, where a column name may contain underscores.
 
-Variable names should be camel cased. Any constructor should start with a capital letter. Any other type of variable should start with a lowercase character.
+Names should be camel cased. Any constructor should start with a capital letter. Any other type of variable should start with a lowercase character.
 
-Constants do not exist in Node. Since the idea of a frozen variable is loose. Global variables should be named like normal variables.
+Constants do not exist in Node, since the idea of a frozen variable is loose. Global variables should be named like normal variables.
 
 __preferred__
 ```js
@@ -84,7 +84,21 @@ function parent() {
 var Child = new Parent();
 ```
 
-## Object Definitions
+## Function Declarations
+
+If possible, do not define a function, rather than assigned a function to a variable.
+
+__preferred__
+```js
+function doSomething() {}
+```
+
+__not preferred__
+```js
+var doSomething = function() {}
+```
+
+## Object Declarations
 
 Objects should always be broken across lines.
 
