@@ -37,19 +37,19 @@ function handler() {
 
 __bad__
 ```js
-var x = 12 // !!!
-var y = function() {} // !!!
+var x = 12
+var y = function() {}
 
 for (var i = 0, l = 5; i < l; i++) {
   // something
-}; // !!!
+};
 
 function handler() {
   // something
-  return // !!!
-}; // !!!
+  return
+};
 
-; // !!!
+;
 ```
 
 ## Naming
@@ -74,17 +74,17 @@ var child = new Parent();
 
 __bad__
 ```js
-var DEFAULTVALUE3 = 30; // !!!
+var DEFAULTVALUE3 = 30;
 
-function parent() { // !!!
-  this.MyValue1 = 10; // !!!
-  this.myvalue2 = 20; // !!!
-  this.my_value_3 = 30; // !!!
+function parent() {
+  this.MyValue1 = 10;
+  this.myvalue2 = 20;
+  this.my_value_3 = 30;
 }
-var Child = new Parent(); // !!!
+var Child = new Parent();
 ```
 
-## Objects
+## Object Definitions
 
 Objects should always be broken across lines.
 
@@ -103,4 +103,85 @@ var obj = {
 __bad__
 ```js
   var obj = { key1: val1, key2: val2 };
+```
+
+## Whitespace
+
+Every statement (`if`, `for`, `while`, `do`, `switch`, `try`, `catch`, `finally`) should have a space before the following `{` bracket or `(` parenthese.
+
+```js
+if (x) {
+  // logic
+}
+```
+
+Simple arrays do not need spacing. But if an array contains complex logic, or another reference, it should have spaces included. Use your best judgement.
+
+```js
+var arr = [1, 2, 3];
+
+var arr2 = [ anotherObj[key] ];
+```
+
+Vertical white-space is needed for readability. Don't shy away from using space to make things readable.
+
+__good__
+```js
+var user = new User({
+  id: 12
+});
+var userName;
+
+user.set({
+  name: {
+    first: 'tim',
+    last: 'marshall'
+  }
+});
+
+user.sync(function() {
+  userName = user.name.first + ' ' + user.name.last;
+
+  if (user.authed) {
+    isAuthed();
+  } else {
+    isNotAuthed();
+  }
+});
+
+function isAuthed() {
+  // more logic for authed users
+}
+
+function isNotAuthed() {
+  // more logic for non-authed users
+}
+```
+
+__bad__
+```js
+var user = new User({
+  id: 12
+});
+var userName;
+user.set({
+  name: {
+    first: 'tim',
+    last: 'marshall'
+  }
+});
+user.sync(function() {
+  userName = user.name.first + ' ' + user.name.last;
+  if (user.authed) {
+    isAuthed();
+  } else {
+    isNotAuthed();
+  }
+});
+function isAuthed() {
+  // more logic for authed users
+}
+function isNotAuthed() {
+  // more logic for non-authed users
+}
 ```
