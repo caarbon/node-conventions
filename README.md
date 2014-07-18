@@ -170,7 +170,7 @@ if (x) {
 }
 ```
 
-Simple arrays do not need spacing. But if an array contains complex logic, or another reference, it should have spaces included. Use your best judgement.
+Simple arrays do not need spacing. But if there are references like the one below, then it should have spaces included.
 
 ```js
 var arr = [1, 2, 3];
@@ -179,67 +179,6 @@ var arr2 = [ anotherObj[key] ];
 ```
 
 Vertical white-space is needed for readability. Don't shy away from using space to make things readable.
-
-__preferred__
-```js
-var user = new User({
-  id: 12
-});
-var userName;
-
-user.set({
-  name: {
-    first: 'tim',
-    last: 'marshall'
-  }
-});
-
-user.sync(function() {
-  userName = user.name.first + ' ' + user.name.last;
-
-  if (user.authed) {
-    isAuthed();
-  } else {
-    isNotAuthed();
-  }
-});
-
-function isAuthed() {
-  // more logic for authed users
-}
-
-function isNotAuthed() {
-  // more logic for non-authed users
-}
-```
-
-__not preferred__
-```js
-var user = new User({
-  id: 12
-});
-var userName;
-user.set({
-  name: {
-    first: 'tim',
-    last: 'marshall'
-  }
-});
-user.sync(function() {
-  userName = user.name.first + ' ' + user.name.last;
-  if (user.authed) {
-    isAuthed();
-  } else {
-    isNotAuthed();
-  }
-});
-function isAuthed() {
-  // more logic for authed users
-}
-function isNotAuthed() {
-  // more logic for non-authed users
-}
-```
 
 ## If Statements
 
@@ -250,35 +189,63 @@ No if statements should be a single line.
 __preferred__
 
 ```js
-if (x > 10) {
-  y = 1;
-} else if (x > 0) {
-  y = 2;
+if (x === y) {
+  a = 10;
+} else if (x === z) {
+  a = 20;
 } else {
-  y = 3;
+  a = 30;
 }
 ```
 
 __not preferred__
 ```js
-if (x > 10) y = 1;
-else if (x > 0) y = 2;
-else y = 3;
+if (x === y) a = 10;
+else if (x === z) a = 20;
+else a = 30;
 ```
 
 __not preferred__
 ```js
-if (x > 10)
-  y = 1;
-else if (x > 0)
-  y = 2;
+if (x === y)
+  a = 10;
+else if (x === z)
+  a = 20;
 else
-  y = 3;
+  a = 30;
 ```
 
 ## Try Catch
 
 Try catch statements should follow the same rules as an if else. See the above documentation.
+
+No function calls should be made from within a `try` (since any error within would bubble up to the `catch`)
+
+__preferred__
+```js
+try {
+  regionId = user.payment.region.id; // will fail if any part of dot notation is undefined
+  passed = true; // will only be reached if no err
+} catch(err) {
+  passed = false;
+}
+
+if (!passed) {
+  processUnavailableRegion(user);
+} else {
+  processAvailableRegion(regionId);
+}
+```
+
+__not preferred__
+```js
+try {
+  regionId = user.payment.region.id; // will fail if any part of dot notation is undefined
+  processAvailableRegion(regionId); // any error in this call will bubble to the catch
+} catch(err) {
+  processUnavailableRegion(user);
+}
+```
 
 ## Use Shorthand Constructors
 
