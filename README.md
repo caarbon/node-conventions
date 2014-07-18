@@ -159,6 +159,44 @@ function someMethod(err, callback) {
 }
 ```
 
+## Callback Hell
+
+If you have tiers of callbacks, then use the `async` module, or something similar, to make it more readable.
+
+__not preferred__
+```js
+module.exports = function(callback) {
+  methodOne(function(err, resOne) {
+    if (err) {
+      return callback(err);
+    }
+
+    methodTwo(function(err, resTwo) {
+      if (err) {
+        return callback(err);
+      }
+
+      methodThree(function(err, resThree) {
+        callback(err);
+      });
+    });
+  });
+};
+```
+
+__preferred__
+```js
+var async = require('async');
+
+module.exports = function(callback) {
+  async.series([
+    methodOne,
+    methodTwo,
+    methodThree
+  ], callback);
+};
+```
+
 ## Whitespace
 
 Every statement (`if`, `for`, `while`, `do`, `switch`, `try`, `catch`, `finally`) should have a space before the following `{` bracket or `(` parenthese.
