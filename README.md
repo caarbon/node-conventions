@@ -54,9 +54,9 @@ function handler() {
 
 ## Naming
 
-All names should be limited to using alpha `a-z` and numeric `0-9` characters. All names should start with an alpha character. Names should be camelcased.
+All names should be limited to using alpha `a-z` and numeric `0-9` characters. All names should start with an alpha character. One exception is when dealing with an outside dependency, like SQL, where a table name may contain underscores.
 
-Any constructor should start with a capital letter. Any other type of variable should start with a lowercase character.
+Variable names should be camel cased. Any constructor should start with a capital letter. Any other type of variable should start with a lowercase character.
 
 Constants do not exist in Node. Since the idea of a frozen variable is loose. Global variables should be named like normal variables.
 
@@ -82,4 +82,25 @@ function parent() { // !!!
   this.my_value_3 = 30; // !!!
 }
 var Child = new Parent(); // !!!
+```
+
+## Objects
+
+Objects should always be broken across lines.
+
+__good__
+```js
+var obj = {
+  key1: val1,
+  key2: val2,
+  key3: {
+    key4: val4,
+    key5: val5
+  }
+};
+```
+
+__bad__
+```js
+  var obj = { key1: val1, key2: val2 };
 ```
