@@ -23,7 +23,7 @@ Don't omit the semicolon after `return`.
 __preferred__
 ```js
 var x = 12;
-var y = function(){};
+var y = function() {};
 
 for (var i = 0, l = 5; i < l; i++) {
   // something
