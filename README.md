@@ -12,6 +12,32 @@ __not preferred__
 var authorised = true;
 ```
 
+## Indentation
+
+Use 2 spaces per indentation level. No tabs.
+
+__preferred__
+```js
+function sumArgs() {
+  for (var i = 0, sum = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+  }
+
+  return sum;
+}
+```
+
+__not preferred__
+```js
+function sumArgs() {
+    for (var i = 0, sum = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+    }
+
+    return sum;
+}
+```
+
 ## Semicolons
 
 Use semicolons.
